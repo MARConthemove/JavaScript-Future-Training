@@ -8,7 +8,7 @@
     }
 
     const doesMemberMatch = (partOfMemberName, member) =>
-        member.innerHTML.includes(partOfMemberName)
+        member.innerHTML.toLowerCase().includes(partOfMemberName.toLowerCase())
 
     const chatMembers = () => $$('#chat_members li')
     const highlight = el => el.classList.add('highlighted')
