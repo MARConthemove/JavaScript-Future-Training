@@ -1,14 +1,19 @@
 'use strict'
 
 {
-  const $$ = q => Array.from(document.querySelectorAll(q))
+    const highlightChatMembersBy = partOfMemberName => {
+        chatMembers()
+            .filter(member => doesMemberMatch(partOfMemberName, member))
+            .forEach(highlight)
+    }
 
-  const searchFor = 'ert'
+    const doesMemberMatch = (partOfMemberName, member) =>
+        member.innerHTML.includes(partOfMemberName)
 
-  const liNodes = $$('#chat_members li')
-  const liNodesFound = liNodes.filter(liNode =>
-      liNode.innerHTML.includes(searchFor),
-  )
+    const chatMembers = () => $$('#chat_members li')
+    const highlight = el => el.classList.add('highlighted')
 
-  liNodesFound.forEach(li => li.classList.add('highlighted'))
+    const $$ = q => Array.from(document.querySelectorAll(q))
+
+    highlightChatMembersBy('ert')
 }
