@@ -1,10 +1,14 @@
-const $$ = q => Array.from(document.querySelectorAll(q))
+'use strict'
 
-const searchFor = 'a'
+{
+  const $$ = q => Array.from(document.querySelectorAll(q))
 
-const liNodes = $$('#chat_members li')
-const liNodesFound = liNodes.filter(liNode =>
-    liNode.innerHTML.includes(searchFor),
-)
+  const searchFor = 'ert'
 
-liNodesFound.forEach(li => li.classList.add('highlighted'))
+  const liNodes = $$('#chat_members li')
+  const liNodesFound = liNodes.filter(liNode =>
+      liNode.innerHTML.includes(searchFor),
+  )
+
+  liNodesFound.forEach(li => li.classList.add('highlighted'))
+}
