@@ -41,7 +41,7 @@
     const $$ = q => document.querySelectorAll(q)
 
     const messages = [
-      `<h1>Tutors are on a strike!!!</h1>
+      `<h1>TTest Test</h1>
     <h2>All assignmnent are automatically graded with 0 points</h2>
     <p>Duis pretium ornare odio nec cursus. Nulla quis dolor vitae nulla condimentum maximus nec vitae purus. Curabitur ut mi non nulla molestie porta. Curabitur dignissim lacinia condimentum. In hac habitasse platea dictumst. Mauris ut urna magna. Mauris venenatis eu quam nec posuere. Nulla facilisi. Donec convallis sodales massa, et consequat nunc vehicula malesuada.</p>
     <p class="newsboard_footer">9/25/2015 by N. O'body</p>`,
