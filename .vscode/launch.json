@@ -7,9 +7,9 @@
         {
             "type": "pwa-chrome",
             "request": "launch",
-            "name": "JS Debug in Chrome",
+            "name": "Launch Chrome against localhost",
             "url": "http://localhost:5500",
-            "webRoot": "${workspaceFolder}/DOM Manipulation/Newsboard/"
+            "webRoot": "${workspaceFolder}"
         }
     ]
 }
