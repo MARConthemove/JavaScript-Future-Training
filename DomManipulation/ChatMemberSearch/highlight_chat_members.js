@@ -1,4 +1,5 @@
 'use strict'
+// Highlighting a chat member when searched for
 
 {
     const init = () =>
