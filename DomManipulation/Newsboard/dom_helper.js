@@ -1,0 +1,13 @@
+'use strict'
+
+//querySelector
+const $ = q => document.querySelector(q)
+//querySelectorAll
+const $$ = (q) => Array.from(document.querySelectorAll(q));
+//addEventListener
+const $on = (el, ev, fn) => {
+  Array.isArray(el)
+    ? el.forEach((o) => $on(o, ev, fn))
+    : el.addEventListener(ev, fn);
+  return el;
+};

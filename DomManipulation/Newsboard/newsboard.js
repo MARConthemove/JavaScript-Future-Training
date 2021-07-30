@@ -11,6 +11,11 @@
         $('[title=last]').addEventListener('click', lastMessage)
     }
 
+    const initProgressbar = () => {
+        progressbar().max = messages.length
+        progressbar().value = 1
+    }
+
     const handleKeyPress = e => {
         console.log(e)
         if(e.key === 'ArrowRight') nextMessage(e)
@@ -21,6 +26,7 @@
 
     const showNumberOfAvailableMessages = () =>
         ($('.message_number').innerHTML = messages.length)
+
 
     const nextMessage = e => showMessageForEvent(e, (currentMessageNumber += 1))
     const prevMessage = e => showMessageForEvent(e, (currentMessageNumber -= 1))
@@ -37,8 +43,12 @@
     const showMessageByNumber = (messageNumber) =>
         ($(".newsboard_content").innerHTML = messages[messageNumber - 1])
 
+    const progressbar = () => $("messages_progress")
     const $ = q => document.querySelector(q)
     const $$ = q => document.querySelectorAll(q)
+
+    const incCurrentMessageNumber = () => (progressbar().value += 1)
+    const decCurrentMessageNumber = () => (progressbar().value -= 1)
 
     const messages = [
       `<h1>This is a test</h1>
