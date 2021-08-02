@@ -1,12 +1,17 @@
-'use strict'
+"use strict";
 
 {
-    const init = () => {
-        $on($('#very_big'), 'click', () => ($('p').style.fontSize = '36px'))
-        $on($('#big'), 'click', () => ($('p').style.fontSize = '24px'))
-        $on($('#normal'), 'click', () => ($('p').style.fontSize = '16px'))
-        $on($('#small'), 'click', () => ($('p').style.fontSize = '14px'))
-    }
+  const init = () => {
+    $on($("#inc"), "click", incFontSize);
+    $on($("#dec"), "click", decFontSize);
+  };
 
-    init()
+  const incFontSize = () => setFontSizeTo(currentFontSize() + 5);
+  const decFontSize = () => setFontSizeTo(currentFontSize() - 5);
+
+  const currentFontSize = () => parseInt(getComputedStyle($("p")).fontSize);
+
+  const setFontSizeTo = (size) => ($("p").style.fontSize = size + "px");
+
+  init();
 }
