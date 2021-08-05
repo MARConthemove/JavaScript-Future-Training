@@ -14,28 +14,57 @@
       price: $("#new_product .price").value,
     });
 
-  const addProduct = (product) =>
+  const addProduct = (product) => {
     $("#products > tbody").appendChild(
-      tr([td(product.name), td(product.price), tdWithRemoveButton()])
+      tr([td(product.name), td(product.price), tdWithActionButtons()])
     );
+    disableNonFunctionalButtons();
+  };
 
-  const tdWithRemoveButton = () => {
+  const tdWithActionButtons = () => {
     const td = document.createElement("td");
     td.appendChild(removeButton());
+    td.appendChild(moveUpButton());
+    td.appendChild(moveDownButton());
     return td;
   };
 
-  const removeButton = () => {
+  const removeButton = () => buildButton("x", "remove_product", removeProduct);
+  const moveUpButton = () => buildButton("↑", "move_product_up", moveProductUp);
+  const moveDownButton = () =>
+    buildButton("↓", "move_product_down", moveProductDown);
+
+  const removeProduct = (event) => productRowForAction(event.target).remove();
+  const moveProductUp = (event) => moveProduct(event, up);
+  const moveProductDown = (event) => moveProduct(event, down);
+
+  const moveProduct = (event, direction) => {
+    const currentProductRow = productRowForAction(event.target);
+    currentProductRow.parentNode.insertBefore(
+      currentProductRow,
+      direction(currentProductRow)
+    );
+  };
+
+  const down = (el) => el.nextElementSibling.nextElementSibling;
+  const up = (el) => el.previousElementSibling;
+
+  const productRowForAction = (button) => button.parentNode.parentNode;
+
+  const buildButton = (symbol, cssClass, action) => {
     const button = document.createElement("button");
-    button.textContent = "x";
-    button.classList.add("remove_product");
-    $on(button, "click", removeProduct);
+    button.textContent = symbol;
+    button.classList.add(cssClass);
+    $on($on(button, "click", action), "click", disableNonFunctionalButtons);
     return button;
   };
 
-  const removeProduct = (event) => productRowForAction(event.target).remove();
-
-  const productRowForAction = (button) => button.parentNode.parentNode;
+  const disableNonFunctionalButtons = () =>
+    $$("#products > tbody > tr").forEach((tr) => {
+      tr.querySelector(".move_product_up").disabled =
+        !tr.previousElementSibling;
+      tr.querySelector(".move_product_down").disabled = !tr.nextElementSibling;
+    });
 
   const td = (text) => {
     const tdNode = document.createElement("td");
