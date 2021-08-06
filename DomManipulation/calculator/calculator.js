@@ -1,18 +1,41 @@
 {
     const init = () => {
-        numPadListener()
+        numbersListener()
+        operatorsListener()
+        equalListener()
     }
 
     // querySelectors:
-    const numSelectorsArr = () => Array.from(document.querySelectorAll(".char.number"))
+    const numbersSelectorArr = () => Array.from(document.querySelectorAll('.char.number'))
 
-    // numPadFunctions:
+    const operatorsSelectorArr = () =>
+        Array.from(document.querySelectorAll('.char.operator'))
+
+    const equalSelector = () => document.querySelector('.char.equal')
 
     // eventListener:
-    const numPadListener = () => numSelectorsArr().forEach(element => {
-            element.addEventListener('click', event => console.log(event))
-        }
-    )
+    const numbersListener = () => numbersSelectorArr().forEach(element => {
+        element.addEventListener('click', numbersFunc)
+    })
+
+    const operatorsListener = () => operatorsSelectorArr().forEach(element => {
+        element.addEventListener('click', operatorsFunc)
+    })
+
+    const equalListener = () => equalSelector().addEventListener('click', equalFunc)
+
+    // functions:
+    const numbersFunc = (event) => {
+        (event) => console.log(event)
+    }
+
+    const operatorsFunc = (event) => {
+        (event) => console.log(event)
+    }
+
+    const equalFunc = (event) => {
+        console.log(event)
+    }
 
     init()
 }
