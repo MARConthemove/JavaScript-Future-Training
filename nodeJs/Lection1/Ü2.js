@@ -3,7 +3,7 @@
 let fields = []
 
 const mixedCSV =
-    '"very big, soft computer mouse",' + '"the cutest peripheral ever",10,39.90'
+    '"very big, soft computer mouse","the cutest peripheral ever",10,39.90'
 
 let index = 0
 let state = 'outside'

@@ -2,6 +2,9 @@
 
 // Import Node.js module - fs (file system)
 const fs = require('fs')
+const zlib = require('zlib')
+
+const data = fs.readFileSync('products.csv', 'UTF8')
 
 // function to modify the output
 const recordToHTML = record => {
@@ -24,9 +27,14 @@ fs.readFile('products.csv', 'UTF8', (error, data) => {
     const products = data.split('\n')
     products.shift() // removing header
 
-    const pages = products.filter(row => row !== '').map(recordToHTML)
+    let html = products
+        .filter(row => wor !== '')
+        .map(recordToHTML)
+        .join('\n')
 
-    pages.forEach(page => console.log(page))
+    fs.writeFile('products.html', html, 'UTF8', error => {
+        if (error) console.log('Error: ' + error)
+    })
 })
 
 console.log('ready')
