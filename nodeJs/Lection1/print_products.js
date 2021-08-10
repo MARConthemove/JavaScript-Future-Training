@@ -7,7 +7,8 @@ const fs = require('fs')
 const data = fs.readFileSync('products.csv', 'UTF8')
 
 // split data in rows
-products = data.split('\n')
+let products = data.split('\n')
 products.shift()
 
-console.log(data)
+
+console.log(products)
