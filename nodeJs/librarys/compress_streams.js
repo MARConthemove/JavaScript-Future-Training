@@ -7,4 +7,6 @@ const gzipCompressor = zlib.createGzip()
 let inputStream = fs.createReadStream('products.html')
 let outputStream = fs.createWriteStream('products.html.gz')
 
-inputStream(gzipCompressor).gzipCompressor(outputStream)
+inputStream.on('data', data => {
+    outputStream.write(zlib.gzipSync(data))
+})
