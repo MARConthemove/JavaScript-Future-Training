@@ -146,11 +146,6 @@
             outputSelector().firstElementChild.innerHTML = historyArr[actualHistoryPos - 1]
             actualHistoryPos -= 1
         }
-
-
-
-
-
     }
 
     // -- starting app --
