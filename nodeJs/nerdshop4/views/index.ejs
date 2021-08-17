@@ -14,11 +14,9 @@
 
   <p>
     <% items.forEach( (item, i) => { %>
-      <a href="/product/<%=i%>">product<%= i %></a><br>
+      <a href="/product/<%=i%>"><%= item.tagline %></a><br>
     <% }); %>
   </p>
-
-  <p><%= product.tagline %></p>
 
 </body>
 
