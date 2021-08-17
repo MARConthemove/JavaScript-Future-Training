@@ -21,6 +21,7 @@ fs.readFile('products.csv', 'UTF8', (error, data) => {
     })
 
     app.get('/product/:ix', (req, res) => {
+        // Template Engine:
         res.render('product', { product: objects[req.params.ix] })
     })
 
@@ -36,6 +37,6 @@ const recordToObject = record => {
         tagline: fields[1],
         quantity: fields[2],
         price: fields[3],
-        stockwarn: fields[2] <= 5 ? true : false,
+        stockwarn: fields[2] <= 5 ? true : false
     }
 }
