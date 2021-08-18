@@ -36,6 +36,7 @@ new Promise(tryWork)
     .then(() => new Promise(tryWork))
     .then(result => console.log('OK: ' + result))
     .catch(reason => console.log('KO: ' + reason))
+    .finally(() => console.log('Programm beendet'))
 
 // gute Programme sollten Fehler auffangen. Falls kein reject() erstellt wird gibt es seit Node.js 6.6 folgenden Fehler in der Console:
 
