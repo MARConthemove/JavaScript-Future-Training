@@ -17,3 +17,56 @@ const doWork = (resolve, reject) => {
 // new Promise erstellt ein Promise Objekt p1 mit dem Argument doWork()
 const p1 = new Promise(doWork)
 
+// Um das Ergebnis zu bekommen (von p1), benötigt man die Promise-API Methode then()..
+p1.then(
+    // resolve() Funktion
+    result => console.log('OK: ' + result),
+    // reject() Funktion
+    reason => console.log('KO: ' + reason),
+)
+
+const p2 = new Promise(resolve => setTimeout(() => resolve(42), 1000))
+
+p2.then(result => console.log(result))
+
+// then() wird im Handler immer ASYNCHRON aufgerufen! Selbst wenn das Promise unmittelbar erfüllt wird.
+
+const p3 = new Promise(resolve => resolve(42))
+console.log('Step 1')
+p3.then(result => console.log('OK: ' + result))
+console.log('Step 2')
+
+// Die Methode then() gibt stets ein neues Promise zurück, das aus dem Rückgabewert des then() Handlers erzeugt wird. DerRückgabewert kann explizit ein Promise sein oder auch ein Wert jedes anderen Typs, der dann einfach implizit in ein Promise verpackt und resolve() übergeben wird.
+
+// -> then() Ketten sind möglich (chaining). Der Reihe nach werden asynchrone Aufgaben erledigt.
+
+const wait = () => new Promise(resolve => setTimeout(resolve, 1000))
+
+wait()
+    .then(() => {
+        console.log('The')
+        return wait()
+    })
+    .then(() => {
+        console.log('pyramid')
+    })
+
+// printDelay() soll ein Promise liefern, das den gegebenen Text verzögert ausgibt.
+
+// print a phrase, a word at a time:
+// use promises to avoid the pyramid of doom!
+
+const printDelay = (time, str) =>
+    new Promise(resolve =>
+        setTimeout(() => {
+            console.log(str)
+            resolve()
+        }, time),
+    )
+
+printDelay(1000, 'The')
+        .then(() => printDelay(1000, 'pyramid'))
+        .then(() => printDelay(1000, 'of'))
+        .then(() => printDelay(1000, 'doom'))
+        .then(() => printDelay(1000, 'is'))
+        .then(() => printDelay(1000, 'defeated'))
