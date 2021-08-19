@@ -11,3 +11,12 @@ app.use(express.static('public'))
 app.listen(port, ip, () => {
     console.log(`Server running at http://${ip}:${port}/`)
 })
+
+app.get("/info", (req, res) => {
+    let info = {
+        price: (174 + 20 * Math.random()).toFixed(2),
+        volume: (16000000 + 5000000 * Math.random()).toFixed(2),
+        time: new Date().toLocaleTimeString(),
+    }
+    res.send(info)
+})
