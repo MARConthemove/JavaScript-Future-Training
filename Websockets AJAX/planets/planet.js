@@ -20,17 +20,21 @@ planet_list.forEach((element) =>
 
 // functions:
 const findPlanet = planet => {
+    // fetching data from API -> promise:
     fetch(`${URL}${PlanetNames[planet]}`)
-        .then(res => res.json())
-        .then(res => showPlanetData(res))
+        .then(res => res.json()) // transformation of data to json
+        .then(res => showPlanetData(res)) //create planet information
         .catch(err => console.log('There was an error: ' + err))
 }
 
 const showPlanetData = res => {
     console.log(res.moons)
 
+    // tap information from API
     const name = document.createElement('p')
     name.innerHTML = res.name
+
+    console.log(name) // testing HTML p-tag
 
     const moons = document.createElement('p')
     moons.innerHTML = res.moons
@@ -39,7 +43,7 @@ const showPlanetData = res => {
     axialTilt.innerHTML = res.axialTilt
 
     const equatorRadius = document.createElement('p')
-    equatorRadius.innerHTML = equaRadius
+    equatorRadius.innerHTML = res.equaRadius
 
 }
 

@@ -1,0 +1,15 @@
+body {
+    background: #B5FFD8;
+}
+
+h1 {
+    color: #AE02FB;
+    font-size: 32px;
+    font-family: 'Ubuntu', sans-serif;
+    text-align: center;
+    margin: 30px 0 30px 0;
+}
+
+ul {
+    list-style-type: none;
+}
