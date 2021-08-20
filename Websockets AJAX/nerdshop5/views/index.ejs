@@ -14,7 +14,7 @@
 
   <p>
     <% items.forEach( item => { %>
-      <%= item.code %>: <%= item.shortdesc %><br>
+      <a href="/product/<%= item.code %>"><%= item.shortdesc %></a><br>
     <% }); %>
   </p>
 

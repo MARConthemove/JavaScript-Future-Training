@@ -9,27 +9,21 @@ const PORT = 8081
 // read products
 csvdb.loadProductsFromFile()
 
-// use EJS template engine
-app.set('view engine', 'ejs')
-
 // serve static files from public/
 app.use(express.static('public'))
 
-// render the index template from views/
-app.get('/', (req, res) => {
-    let products = csvdb
-        .getProductCodes()
-        .map(code => csvdb.getProductByCode(code))
-    res.render('index', { items: products })
+// return list of product codes
+app.get('/product/', (req, res) => {
+    res.send(csvdb.getProductCodes())
 })
 
+// return a product identified by its code
 app.get('/product/:code', (req, res) => {
     let selectedProduct = csvdb.getProductByCode(req.params.code)
     if (selectedProduct.code) {
-        res.render('product', { product: selectedProduct })
+        res.send(selectedProduct)
     } else {
-        res.status(404)
-        .send('unkown product code')
+        res.status(404).send({})
     }
 })
 
