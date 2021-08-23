@@ -1,0 +1,10 @@
+{
+    "name": "swapi",
+    "version": "1.0.0",
+    "description": "StarWars Planet Page",
+    "private": true,
+    "dependencies": {
+        "express": "^4.17.1"
+    },
+    "author": "Marc-Fabian Gaetcke"
+}
