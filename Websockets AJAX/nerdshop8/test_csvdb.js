@@ -1,6 +1,6 @@
-'use strict'
-const fs = require('fs')
-const csvdb = require('./csvdb.js')
+"use strict"
+const fs = require("fs")
+const csvdb = require("./csvdb.js")
 
 const assert = (a, b) => {
     if (a !== b) {
@@ -14,39 +14,49 @@ csvdb.loadProductsFromFile()
 assert(8, csvdb.getProductCodes().length)
 
 csvdb.insertProduct({
-    code: 'TEST0815',
-    shortdesc: 'test product',
-    tagline: 'yo',
-    quantity: '10',
-    price: '9.90',
+    code: "TEST0815",
+    shortdesc: "test product",
+    tagline: "yo",
+    quantity: "10",
+    price: "9.90",
 })
 csvdb.insertProduct({
-    code: 'TEST0816',
-    shortdesc: 'another test',
-    tagline: 'yo',
-    quantity: '1',
-    price: '9.90',
+    code: "TEST0816",
+    shortdesc: "another test",
+    tagline: "yo",
+    quantity: "1",
+    price: "9.90",
 })
 
 assert(10, csvdb.getProductCodes().length)
-assert(false, csvdb.getProductByCode('TEST0815').stockwarn)
-assert(true, csvdb.getProductByCode('TEST0816').stockwarn)
+assert(false, csvdb.getProductByCode("TEST0815").stockwarn)
+assert(true, csvdb.getProductByCode("TEST0816").stockwarn)
 
-csvdb.deleteProduct('TEST0815')
+csvdb.deleteProduct("TEST0815")
 csvdb.updateProduct({
-    code: 'TEST0816',
-    shortdesc: 'another test',
-    tagline: 'yo',
-    quantity: '1',
-    price: '19.90',
+    code: "TEST0816",
+    shortdesc: "another test",
+    tagline: "yo",
+    quantity: "1",
+    price: "19.90",
 })
 
-assert('19.90', csvdb.getProductByCode('TEST0816').price)
+assert("19.90", csvdb.getProductByCode("TEST0816").price)
 
-csvdb.deleteProduct('TEST0816')
+csvdb.deleteProduct("TEST0816")
 
 assert(8, csvdb.getProductCodes().length)
 
 csvdb.saveProductsToFile()
 
-console.log('all tests passed')
+// added exercise solution: compare files
+
+let newFile = fs.readFileSync("products.csv", "UTF8")
+let oldFile = fs.readFileSync("products.csv.bak", "UTF8")
+
+if (oldFile !== newFile) {
+    console.log(`test failed: "files differ"`)
+    process.exit(1)
+}
+
+console.log("all tests passed")

@@ -68,7 +68,12 @@ exports.insertProduct = product => {
 }
 
 exports.deleteProduct = code => {
-
+    let index = getIndexByCode(product.code)
+    if (index === NOT_FOUND) {
+        console.log('warning: could not delete product (unkown code)')
+        return
+    }
+    product.splice(index, 1)
 }
 
 const getIndexByCode = code => {
