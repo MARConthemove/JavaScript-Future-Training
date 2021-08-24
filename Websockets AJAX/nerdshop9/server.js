@@ -4,6 +4,7 @@ const IP = '127.0.0.1'
 const PORT = 8081
 
 const express = require('express')
+// fetch Anfragen -> schaut sich Rückgabe an un dort auf JSON zugreifen kann
 const bodyparser = require('body-parser')
 const app = express()
 app.use(express.static('public'))

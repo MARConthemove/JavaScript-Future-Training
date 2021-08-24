@@ -1,15 +1,20 @@
 const viewProductList = () => {
     // fetching data from root /product/
     fetch('/product/')
-        // to make the res "body" object accessable -> we need to convert the promise into .json format
+        // to make the res "body" object accessabel -> we need to convert the promise into .json format
         .then(res => res.json())
-        // verstehe ich nicht ..
+        // Codes / IDs -> Geh über alle Einträge Json und schicke sie an den server als /product/code
         .then(codes => Promise.all(codes.map(c => fetch('/product/' + c))))
+        // Objekte wieder in Json umwandeln
         .then(res => Promise.all(res.map(r => r.json())))
+        // Aufruf show funktion mit Rückgabewert von fetch(product)
         .then(products => show(products))
 
+        // zeile 7, 9 braucht Promise.all da wir innerhalb der Kette nicht mit .then() arbeiten!
+
+
     const show = products => {
-        // was ist das genau ?
+        // Anzeige von Tabelle
         $('#product_list').style.display = 'block'
         $('#product_edit').style.display = 'none'
 
@@ -48,6 +53,7 @@ const viewProductList = () => {
 
         $('#add').addEventListener('click', ev => {
             viewProductEdit()
+            // <a id="add" href="#">add new product</a> -> Funktioniert so nicht. Browser soll die Seite nicht neu laden
             ev.preventDefault()
         })
 
