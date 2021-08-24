@@ -17,6 +17,9 @@ app.get('/product/', (req, res) => {
     res.send(csvdb.getProductCodes())
 })
 
+// req : request
+// res : response
+
 app.get('/product/:code', (req, res) => {
     let selectedProduct = csvdb.getProductByCode(req.params.code)
     if (selectedProduct.code !== undefined) {
