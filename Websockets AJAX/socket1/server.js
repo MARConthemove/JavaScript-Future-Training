@@ -16,6 +16,7 @@ const io = socketIo(webServer)
 // log incoming connection
 // init handler to always call when a new WebSocket want to connect
 io.on('connection', socket => {
+    console.log(socket)
     console.log(
         `new client (${socket.id}) connected from ${socket.conn.remoteAddress}`,
     )

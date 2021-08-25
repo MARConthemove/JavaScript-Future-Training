@@ -20,7 +20,8 @@
 </html>
    <script src="/socket.io/socket.io.js"></script>
     <script>
-    const socket = io.connect(); 
+    // Neue Verbindung wird hergestellt und der resultierende WebSocket in der Variable "socket" abgelegt
+    const socket = io.connect();
     socket.on("message", (message) => {
         const messageArea = document.querySelector("#messageArea");
         messageArea.textContent = messageArea.textContent + message + "\n";
