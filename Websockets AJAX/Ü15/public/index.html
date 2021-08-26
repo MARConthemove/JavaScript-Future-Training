@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lamp: a socket.io excercise</title>
+    <script>
+        const socket = io.connect()
+        socket.on('setLight', s => {
+            document.querySelector('#lamp').src = [
+                'light-off.png',
+                'light-on.png'
+            ][Number(s)]
+        })
+        socket.emit('getLight')
+    </script>
+</head>
+<body>
+    <img id="lamp">
+    <script>
+        document.querySelector('#lamp').addEventListener('click', () => {
+            socket.emit('toggleLight')
+        })
+    </script>
+</body>
+</html>
