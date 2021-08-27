@@ -1,7 +1,7 @@
 'use strict'
 
-const stringCalc = (str) => Number(str)
-
-const sum = (arrayNum) => arrayNum.reduce((a, b) => a + b)
+const stringCalc = str => sum(str.split(',').map(Number).filter(n => n <= 1000))
+const sum = (numbers) => numbers.reduce(add)
+const add = (a, b) => a + b
 
 module.exports = { stringCalc, sum }

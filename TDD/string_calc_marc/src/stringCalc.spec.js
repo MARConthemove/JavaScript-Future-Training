@@ -17,7 +17,13 @@ describe('stringCalc', () => {
     it('should return a single 2 from string', () => {
         expect(stringCalc('2')).to.be.equal(2)
     })
-    xit('should return the sum of two comma separated numbers', () => {
+    it('should return the sum of two comma separated numbers', () => {
         expect(stringCalc('1,2,3')).to.be.equal(6)
+    })
+    it('should ignore numbers < 1000', () => {
+        expect(stringCalc('1,1001,2')).to.be.equal(3)
+    })
+    it('should also work with linebreaks', () => {
+        expect(stringCalc('1\n2,3')).to.be.equal(6)
     })
 });
