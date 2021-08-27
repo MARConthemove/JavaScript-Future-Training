@@ -1,0 +1,16 @@
+{
+  "name": "string_calc_marc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx mocha --watch **/*.spec.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^9.1.0",
+    "must": "^0.13.4"
+  }
+}
