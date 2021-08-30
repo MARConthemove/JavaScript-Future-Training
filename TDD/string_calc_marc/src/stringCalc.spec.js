@@ -1,5 +1,10 @@
 const expect = require('must')
-const { stringCalc, sum } = require('./stringCalc')
+const {
+    stringCalc,
+    sum,
+    extractSeparator,
+    withoutCustomSeparator,
+} = require("./stringCalc")
 
 describe('sum', () => {
     it('should add up all numbers from an Array', () => {
@@ -25,5 +30,8 @@ describe('stringCalc', () => {
     })
     it('should also work with linebreaks', () => {
         expect(stringCalc('1\n2,3')).to.be.equal(6)
+    })
+    it("should accept custom separator", () => {
+        expect(stringCalc("//;\n1;2")).to.be.equal(3)
     })
 });
