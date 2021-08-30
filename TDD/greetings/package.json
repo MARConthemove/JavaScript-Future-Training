@@ -1,0 +1,16 @@
+{
+  "name": "greetings",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx mocha --watch **/*.spec.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^9.1.1",
+    "must": "^0.13.4"
+  }
+}
