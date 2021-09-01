@@ -28,25 +28,22 @@ const App = () => (
                     <th>Total</th>
                 </tr>
             </thead>
+            <tbody>
+                {invoiceItems.map(item => (
+                    <InvoiceItem {...item} key={item.name} />
+                ))}
+            </tbody>
         </table>
-
-        <ul className="invoice_items">
-            {invoiceItems.map((item) => (
-                <li key={item.name}>
-                    <InvoiceItem {...item}
-
-                    />
-                </li>
-            ))}
-        </ul>
     </div>
 )
 
 const InvoiceItem = (props) => (
-    <h3>
-        {props.count} &times; {props.name}:
-        <span className="price"> ${props.price}</span>
-    </h3>
+    <tr>
+        <td>{props.count} &times;</td>
+        <td>{props.name}</td>
+        <td className="price">${props.price}</td>
+        <td className="price">${props.count * props.price}</td>
+    </tr>
 )
 
 

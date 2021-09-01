@@ -29598,9 +29598,8 @@ var _invoice_items = _interopRequireDefault(require("./invoice_items"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// import ist ähnlich wie require(node.js)
-// einbinden von bibliotheken
-// import von react und react-dom
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 // work-arround hot-reloading
 if (module.hot) {
   module.hot.accept();
@@ -29613,19 +29612,19 @@ if (module.hot) {
 var App = function App() {
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h2", null, "Invoice"), /*#__PURE__*/_react.default.createElement("table", {
     className: "invoice"
-  }, /*#__PURE__*/_react.default.createElement("thead", null, /*#__PURE__*/_react.default.createElement("tr", null, /*#__PURE__*/_react.default.createElement("th", null, "Count"), /*#__PURE__*/_react.default.createElement("th", null, "Name"), /*#__PURE__*/_react.default.createElement("th", null, "Price"), /*#__PURE__*/_react.default.createElement("th", null, "Total")))), /*#__PURE__*/_react.default.createElement("ul", {
-    className: "invoice_items"
-  }, _invoice_items.default.map(function (item) {
-    return /*#__PURE__*/_react.default.createElement("li", {
+  }, /*#__PURE__*/_react.default.createElement("thead", null, /*#__PURE__*/_react.default.createElement("tr", null, /*#__PURE__*/_react.default.createElement("th", null, "Count"), /*#__PURE__*/_react.default.createElement("th", null, "Name"), /*#__PURE__*/_react.default.createElement("th", null, "Price"), /*#__PURE__*/_react.default.createElement("th", null, "Total"))), /*#__PURE__*/_react.default.createElement("tbody", null, _invoice_items.default.map(function (item) {
+    return /*#__PURE__*/_react.default.createElement(InvoiceItem, _extends({}, item, {
       key: item.name
-    }, /*#__PURE__*/_react.default.createElement(InvoiceItem, item));
-  })));
+    }));
+  }))));
 };
 
 var InvoiceItem = function InvoiceItem(props) {
-  return /*#__PURE__*/_react.default.createElement("h3", null, props.count, " \xD7 ", props.name, ":", /*#__PURE__*/_react.default.createElement("span", {
+  return /*#__PURE__*/_react.default.createElement("tr", null, /*#__PURE__*/_react.default.createElement("td", null, props.count, " \xD7"), /*#__PURE__*/_react.default.createElement("td", null, props.name), /*#__PURE__*/_react.default.createElement("td", {
     className: "price"
-  }, " $", props.price));
+  }, "$", props.price), /*#__PURE__*/_react.default.createElement("td", {
+    className: "price"
+  }, "$", props.count * props.price));
 };
 
 var Product = function Product(props) {
