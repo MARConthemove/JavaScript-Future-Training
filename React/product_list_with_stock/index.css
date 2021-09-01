@@ -1,0 +1,8 @@
+h3.stock_critical {
+    color: red;
+    margin-block-end: 0;
+}
+
+sub.stock_critical {
+    font-style: italic;
+}
