@@ -29566,12 +29566,35 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"index.js":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"invoice_items.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = [{
+  count: 2,
+  name: "Klingon Letter Opener",
+  price: 15.0
+}, {
+  count: 1,
+  name: "3D Printing Pen",
+  price: 20.0
+}, {
+  count: 3,
+  name: "8-Bit Heat-Change Mug",
+  price: 6.0
+}];
+exports.default = _default;
+},{}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
 
 var _reactDom = _interopRequireDefault(require("react-dom"));
+
+var _invoice_items = _interopRequireDefault(require("./invoice_items"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29587,15 +29610,33 @@ if (module.hot) {
 // React-Komponente:
 
 
-var HelloMessage = function HelloMessage() {
-  return /*#__PURE__*/_react.default.createElement("h2", null, "Hello World!");
+var App = function App() {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h2", null, "Invoice"), /*#__PURE__*/_react.default.createElement("table", {
+    className: "invoice"
+  }, /*#__PURE__*/_react.default.createElement("thead", null, /*#__PURE__*/_react.default.createElement("tr", null, /*#__PURE__*/_react.default.createElement("th", null, "Count"), /*#__PURE__*/_react.default.createElement("th", null, "Name"), /*#__PURE__*/_react.default.createElement("th", null, "Price"), /*#__PURE__*/_react.default.createElement("th", null, "Total")))), /*#__PURE__*/_react.default.createElement("ul", {
+    className: "invoice_items"
+  }, _invoice_items.default.map(function (item) {
+    return /*#__PURE__*/_react.default.createElement("li", {
+      key: item.name
+    }, /*#__PURE__*/_react.default.createElement(InvoiceItem, item));
+  })));
+};
+
+var InvoiceItem = function InvoiceItem(props) {
+  return /*#__PURE__*/_react.default.createElement("h3", null, props.count, " \xD7 ", props.name, ":", /*#__PURE__*/_react.default.createElement("span", {
+    className: "price"
+  }, " $", props.price));
+};
+
+var Product = function Product(props) {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h3", null, props.name), props.children);
 }; // Für diesen Node benötigt man 2 Paramter:
 // 1: React-Komponente
 // 2: DOM querySelector -> React node
 
 
-_reactDom.default.render( /*#__PURE__*/_react.default.createElement(HelloMessage, null), document.querySelector("#app"));
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+_reactDom.default.render( /*#__PURE__*/_react.default.createElement(App, null), document.querySelector("#app"));
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./invoice_items":"invoice_items.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -29623,7 +29664,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55317" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50785" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
