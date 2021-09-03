@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { getSign } from "horoscope"
-import { relative } from 'path'
+
 
 const ASTRO_SIGNS = {
     Aries: "♈",
