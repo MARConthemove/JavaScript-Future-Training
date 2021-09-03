@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState } from "react"
 import { getSign } from "horoscope"
-import { relative } from 'path'
+import { relative } from "path"
 
 const ASTRO_SIGNS = {
     Aries: "♈",
@@ -37,64 +37,64 @@ export const Sign = (props) => {
         <div>
             <div
                 style={{
-                    position: 'relative',
-                    width: '50px',
-                    height: '1em',
-                    display: 'inline-block',
+                    position: "relative",
+                    width: "50px",
+                    height: "1em",
+                    display: "inline-block",
                 }}
             >
                 <sub
                     style={{
-                        position: 'absolute',
-                        top: '-16px',
-                        left: '10px',
+                        position: "absolute",
+                        top: "-9px",
+                        left: "10px",
                     }}
                 >
                     day
                 </sub>
                 <input
-                    style={{ width: '40px'}}
-                    min='1'
-                    max='31'
-                    type='number'
+                    style={{ width: "40px" }}
+                    min="1"
+                    max="31"
+                    type="number"
                     value={day}
-                    onChange={e => setValidDay(Number(e.target.value))}
+                    onChange={(e) => setValidDay(Number(e.target.value))}
                 />
             </div>
 
             <div
                 style={{
-                    position: 'absolute',
-                    width: '100px',
-                    height: '1em',
-                    display: 'inline-block',
+                    position: "relative",
+                    width: "100px",
+                    height: "1em",
+                    display: "inline-block",
                 }}
             >
                 <sub
                     style={{
-                        position: 'absolute',
-                        top: '-16px',
-                        left: '6px',
+                        position: "absolute",
+                        top: "-9px",
+                        left: "6px",
                     }}
                 >
                     month
                 </sub>
                 <input
-                    style={{ width: '40px' }}
-                    min='1'
-                    max='12'
-                    type='number'
+                    style={{ width: "40px" }}
+                    min="1"
+                    max="12"
+                    type="number"
                     value={month}
-                    onChange={e => setValidMonth(Number(e.target.value))}
+                    onChange={(e) => setValidMonth(Number(e.target.value))}
                 />
             </div>
 
             <div
                 style={{
-                    padding: '20px',
-                    fontSize: '50px',
-                    fontWeight: 'bold',
-                    color: 'purple',
+                    padding: "20px",
+                    fontSize: "50px",
+                    fontWeight: "bold",
+                    color: "purple",
                 }}
             >
                 {ASTRO_SIGNS[getSign({ month, day })]}
