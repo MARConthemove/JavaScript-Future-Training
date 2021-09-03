@@ -10,8 +10,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "date-fns": "^2.23.0",
+    "horoscope": "^2.0.1",
     "parcel-bundler": "^1.12.5",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "zodiac": "^0.1.17"
   }
 }
